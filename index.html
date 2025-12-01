@@ -4,86 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="ByMobility - Expert en gestion locative courte durée et bail mobilité à Paris. Maximisez la rentabilité de votre bien immobilier.">
-    <title>ByMobility - Gestion Locative Premium à Paris</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>ByMobility - Expert en gestion locative courte durée et bail mobilité à Paris</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <a href="#" class="logo">
-                    <img src="https://bymobility.fr/wp-content/uploads/2024/09/IMG_76621-300x91.png" alt="ByMobility Logo">
-                </a>
-                <ul class="nav-links">
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="location-courte-duree.html">Courte Durée</a></li>
-                    <li><a href="bail-mobilite.html">Bail Mobilité</a></li>
-                    <li><a href="a-propos.html">À Propos</a></li>
-                    <li><a href="#contact" class="cta-button">Nous Contacter</a></li>
-                </ul>
-                <button class="mobile-menu-toggle" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="https://bymobility.fr/wp-content/uploads/2024/09/IMG_76621-300x91.png" alt="ByMobility Logo">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#accueil" class="nav-link">Accueil</a></li>
+                <li><a href="#services" class="nav-link">Courte Durée</a></li>
+                <li><a href="#bail-mobilite" class="nav-link">Bail Mobilité</a></li>
+                <li><a href="#about" class="nav-link">À Propos</a></li>
+                <li><a href="#contact" class="nav-link cta-btn">Nous Contacter</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="accueil">
         <div class="hero-background">
+            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1920&h=1080&fit=crop&q=80" alt="Appartement Paris" class="hero-bg-image">
             <div class="hero-overlay"></div>
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+            <div class="particles" id="particles"></div>
         </div>
-        <div class="container">
+        <div class="container hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="title-line">Transformez votre bien</span>
-                    <span class="title-line">en investissement rentable</span>
+                <h1 class="hero-title animate-in">
+                    Transformez votre bien en
+                    <span class="gradient-text">investissement rentable</span>
                 </h1>
-                <p class="hero-subtitle">Expert en gestion locative courte durée à Paris. Confiez-nous votre bien, profitez de revenus maximisés sans contrainte.</p>
-                <div class="hero-cta">
-                    <a href="#contact" class="button button-primary">Estimer mon bien</a>
-                    <a href="#services" class="button button-secondary">Découvrir nos services</a>
+                <p class="hero-subtitle animate-in">
+                    Expert en gestion locative courte durée à Paris. Confiez-nous votre bien, profitez de revenus maximisés sans contrainte.
+                </p>
+                <div class="hero-cta animate-in">
+                    <a href="#contact" class="btn btn-primary">Estimer mon bien</a>
+                    <a href="#services" class="btn btn-secondary">Découvrir nos services</a>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="80">0</span>
-                        <span class="stat-label">Propriétaires</span>
+                <div class="hero-stats animate-in">
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="80">0</div>
+                        <div class="stat-label">Propriétaires</div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="100">0</span>
-                        <span class="stat-label">Biens en gestion</span>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="100">0</div>
+                        <div class="stat-label">Biens en gestion</div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="3">0</span>
-                        <span class="stat-suffix">M€</span>
-                        <span class="stat-label">Actifs en gestion</span>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="3">0</div>
+                        <div class="stat-label">M€ Actifs en gestion</div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="hero-logo">
+            <img src="https://bymobility.fr/wp-content/uploads/2024/09/IMG_76621-300x91.png" alt="ByMobility Logo">
+        </div>
         <div class="scroll-indicator">
-            <span></span>
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
+    <section class="services" id="services">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Nos Services</span>
                 <h2 class="section-title">Deux solutions adaptées à vos besoins</h2>
                 <p class="section-description">Que vous recherchiez la flexibilité ou la stabilité, nous avons la solution pour optimiser votre bien.</p>
             </div>
-            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); max-width: 1000px; margin: 0 auto;">
+            <div class="services-grid">
+                <!-- Service 1 -->
                 <div class="service-card featured">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&auto=format&fit=crop&q=80" alt="Appartement moderne" loading="lazy">
+                    </div>
                     <div class="service-badge">Le plus flexible</div>
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 22V12H15V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
                     <h3 class="service-title">Location Courte Durée</h3>
@@ -97,14 +113,19 @@
                         <li>Support propriétaire 24/7</li>
                         <li>Tableau de bord en temps réel</li>
                     </ul>
-                    <a href="location-courte-duree.html" class="button button-primary" style="margin-top: 1rem; width: 100%; justify-content: center;">En savoir plus</a>
+                    <a href="#contact" class="service-cta">En savoir plus →</a>
                 </div>
-                <div class="service-card">
-                    <div class="service-badge">Le plus stable</div>
+
+                <!-- Service 2 -->
+                <div class="service-card" id="bail-mobilite">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&auto=format&fit=crop&q=80" alt="Appartement confortable" loading="lazy">
+                    </div>
+                    <div class="service-badge stable">Le plus stable</div>
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </div>
                     <h3 class="service-title">Bail Mobilité</h3>
@@ -118,82 +139,117 @@
                         <li>Encaissement des loyers</li>
                         <li>Sans dépôt de garantie</li>
                     </ul>
-                    <a href="bail-mobilite.html" class="button button-secondary" style="margin-top: 1rem; width: 100%; justify-content: center;">En savoir plus</a>
+                    <a href="#contact" class="service-cta">En savoir plus →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Advantages Section -->
-    <section id="advantages" class="advantages">
+    <!-- Benefits Section -->
+    <section class="benefits" id="about">
         <div class="container">
-            <div class="advantages-content">
-                <div class="advantages-text">
-                    <span class="section-tag">Pourquoi ByMobility</span>
-                    <h2 class="section-title">L'excellence au service de votre patrimoine</h2>
-                    <div class="advantages-list">
-                        <div class="advantage-item">
-                            <div class="advantage-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                            </div>
-                            <div class="advantage-content">
-                                <h3>Rentabilité maximisée</h3>
-                                <p>Tarification dynamique et taux d'occupation optimal pour des revenus supérieurs à la location classique.</p>
-                            </div>
-                        </div>
-                        <div class="advantage-item">
-                            <div class="advantage-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                            </div>
-                            <div class="advantage-content">
-                                <h3>Zéro contrainte</h3>
-                                <p>Plus de gestion, plus d'imprévus. Nous prenons tout en charge pendant que vous profitez tranquillement.</p>
-                            </div>
-                        </div>
-                        <div class="advantage-item">
-                            <div class="advantage-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                            </div>
-                            <div class="advantage-content">
-                                <h3>Transparence totale</h3>
-                                <p>Tableau de bord en temps réel, reporting mensuel détaillé. Suivez vos performances où que vous soyez.</p>
-                            </div>
-                        </div>
-                        <div class="advantage-item">
-                            <div class="advantage-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                            </div>
-                            <div class="advantage-content">
-                                <h3>Conformité assurée</h3>
-                                <p>Respect de la réglementation parisienne, assurances, déclarations. Sérénité garantie.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#contact" class="button button-primary">Commencer maintenant</a>
+            <div class="section-header">
+                <span class="section-tag">Pourquoi ByMobility</span>
+                <h2 class="section-title">L'excellence au service de votre patrimoine</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3 class="benefit-title">Rentabilité maximisée</h3>
+                    <p class="benefit-description">Tarification dynamique et taux d'occupation optimal pour des revenus supérieurs à la location classique.</p>
                 </div>
-                <div class="advantages-visual">
-                    <div class="visual-card card-1">
-                        <div class="card-icon">💰</div>
-                        <div class="card-stat">+35%</div>
-                        <div class="card-label">Revenus vs location classique</div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">✨</div>
+                    <h3 class="benefit-title">Zéro contrainte</h3>
+                    <p class="benefit-description">Plus de gestion, plus d'imprévus. Nous prenons tout en charge pendant que vous profitez tranquillement.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3 class="benefit-title">Transparence totale</h3>
+                    <p class="benefit-description">Tableau de bord en temps réel, reporting mensuel détaillé. Suivez vos performances où que vous soyez.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3 class="benefit-title">Conformité assurée</h3>
+                    <p class="benefit-description">Respect de la réglementation parisienne, assurances, déclarations. Sérénité garantie.</p>
+                </div>
+            </div>
+            <div class="stats-cards">
+                <div class="stat-highlight">
+                    <div class="stat-highlight-value">+35%</div>
+                    <div class="stat-highlight-label">Revenus vs location classique</div>
+                </div>
+                <div class="stat-highlight">
+                    <div class="stat-highlight-value">24h</div>
+                    <div class="stat-highlight-label">Délai moyen de réponse</div>
+                </div>
+                <div class="stat-highlight">
+                    <div class="stat-highlight-value">5★</div>
+                    <div class="stat-highlight-label">Note moyenne clients</div>
+                </div>
+            </div>
+            <div class="benefits-cta">
+                <a href="#contact" class="btn btn-primary">Commencer maintenant</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Notre Expertise</span>
+                <h2 class="section-title">Des biens d'exception à Paris</h2>
+                <p class="section-description">Découvrez quelques-uns des appartements que nous gérons avec excellence</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item gallery-item-large">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=800&fit=crop&q=80" alt="Appartement Paris" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Appartements Haut de Gamme</h3>
+                        <p>Marais, 75004</p>
                     </div>
-                    <div class="visual-card card-2">
-                        <div class="card-icon">⚡</div>
-                        <div class="card-stat">24h</div>
-                        <div class="card-label">Délai moyen de réponse</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1558036117-15d82a90b9b1?w=600&h=600&fit=crop&q=80" alt="Salon moderne" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Design Contemporain</h3>
+                        <p>Saint-Germain, 75006</p>
                     </div>
-                    <div class="visual-card card-3">
-                        <div class="card-icon">🏆</div>
-                        <div class="card-stat">5★</div>
-                        <div class="card-label">Note moyenne clients</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=600&fit=crop&q=80" alt="Cuisine équipée" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Équipements Premium</h3>
+                        <p>Bastille, 75011</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?w=600&h=600&fit=crop&q=80" alt="Vue sur Paris" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Vues Exceptionnelles</h3>
+                        <p>Montmartre, 75018</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&h=600&fit=crop&q=80" alt="Salle de bain moderne" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Design Raffiné</h3>
+                        <p>Opéra, 75009</p>
+                    </div>
+                </div>
+                <div class="gallery-item gallery-item-wide">
+                    <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1000&h=600&fit=crop&q=80" alt="Chambre luxueuse" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Confort & Élégance</h3>
+                        <p>Champs-Élysées, 75008</p>
+                    </div>
+                </div>
+                <div class="gallery-item gallery-item-wide">
+                    <img src="https://bymobility.fr/wp-content/uploads/2024/09/IMG_7663.png" alt="Vue Paris" loading="lazy" class="gallery-img-contain">
+                    <div class="gallery-overlay">
+                        <h3>Paris Authentique</h3>
+                        <p>Paris</p>
                     </div>
                 </div>
             </div>
@@ -208,22 +264,20 @@
                 <h2 class="section-title">Votre expert en gestion locative</h2>
                 <p class="section-description">Découvrez comment nous transformons votre bien en source de revenus passifs</p>
             </div>
-            <div class="video-container">
+            <div class="video-wrapper">
                 <iframe
-                    width="100%"
-                    height="600"
                     src="https://www.youtube.com/embed/PH6dQ59Oayg"
-                    title="ByMobility - Présentation"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
+                    allowfullscreen
+                    loading="lazy"
+                ></iframe>
             </div>
         </div>
     </section>
 
     <!-- Process Section -->
-    <section id="process" class="process">
+    <section class="process">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Comment ça marche</span>
@@ -272,42 +326,47 @@
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <span>⭐⭐⭐⭐⭐</span>
-                    </div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
                     <p class="testimonial-text">"Service impeccable ! ByMobility gère mon appartement depuis 6 mois et mes revenus ont augmenté de 40%. Plus aucun souci de gestion, tout est pris en charge."</p>
                     <div class="testimonial-author">
-                        <strong>Marie D.</strong>
-                        <span>Propriétaire Paris 11ème</span>
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <div class="author-name">Marie D.</div>
+                            <div class="author-role">Propriétaire Paris 11ème</div>
+                        </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <span>⭐⭐⭐⭐⭐</span>
-                    </div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
                     <p class="testimonial-text">"Équipe professionnelle et réactive. Le suivi est transparent avec un tableau de bord clair. Je recommande vivement pour tout propriétaire souhaitant optimiser ses revenus locatifs."</p>
                     <div class="testimonial-author">
-                        <strong>Thomas L.</strong>
-                        <span>Investisseur immobilier</span>
+                        <div class="author-avatar">T</div>
+                        <div class="author-info">
+                            <div class="author-name">Thomas L.</div>
+                            <div class="author-role">Investisseur immobilier</div>
+                        </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <span>⭐⭐⭐⭐⭐</span>
-                    </div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
                     <p class="testimonial-text">"Après avoir testé plusieurs conciergeries, ByMobility se démarque par son professionnalisme. Taux d'occupation excellent et communication au top !"</p>
                     <div class="testimonial-author">
-                        <strong>Sophie M.</strong>
-                        <span>Propriétaire Paris 10ème</span>
+                        <div class="author-avatar">S</div>
+                        <div class="author-info">
+                            <div class="author-name">Sophie M.</div>
+                            <div class="author-role">Propriétaire Paris 10ème</div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="google-rating">
-                <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" class="google-logo">
-                <div class="rating-info">
-                    <div class="rating-stars">⭐⭐⭐⭐⭐</div>
-                    <div class="rating-text">4.9/5 sur Google</div>
-                </div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                <span>⭐⭐⭐⭐⭐ 4.9/5 sur Google</span>
             </div>
         </div>
     </section>
@@ -323,13 +382,11 @@
             <div class="pricing-grid">
                 <div class="pricing-card featured">
                     <div class="pricing-badge">Le plus demandé</div>
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">Location Courte Durée</h3>
-                        <div class="pricing-icon">🏠</div>
-                    </div>
+                    <div class="pricing-icon">🏠</div>
+                    <h3 class="pricing-title">Location Courte Durée</h3>
                     <div class="pricing-price">
-                        <span class="price-number">20%</span>
-                        <span class="price-period">de commission sur les revenus locatifs</span>
+                        <span class="price-value">20%</span>
+                        <span class="price-label">de commission sur les revenus locatifs</span>
                     </div>
                     <ul class="pricing-features">
                         <li>Conseils d'optimisation</li>
@@ -341,16 +398,14 @@
                         <li>Gestion du ménage et de la maintenance</li>
                         <li>Account Manager dédié</li>
                     </ul>
-                    <a href="#contact" class="button button-primary">Démarrer</a>
+                    <a href="#contact" class="btn btn-primary">Choisir ce plan</a>
                 </div>
                 <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">Bail Mobilité</h3>
-                        <div class="pricing-icon">📅</div>
-                    </div>
+                    <div class="pricing-icon">📅</div>
+                    <h3 class="pricing-title">Bail Mobilité</h3>
                     <div class="pricing-price">
-                        <span class="price-number">15%</span>
-                        <span class="price-period">de commission sur les revenus locatifs</span>
+                        <span class="price-value">15%</span>
+                        <span class="price-label">de commission sur les revenus locatifs</span>
                     </div>
                     <ul class="pricing-features">
                         <li>Conseils d'optimisation</li>
@@ -362,32 +417,32 @@
                         <li>Gestion du ménage et de la maintenance</li>
                         <li>Account Manager dédié</li>
                     </ul>
-                    <a href="#contact" class="button button-primary">Démarrer</a>
+                    <a href="#contact" class="btn btn-secondary">Choisir ce plan</a>
                 </div>
             </div>
             <div class="pricing-note">
-                <p><strong>💡 Estimation gratuite et sans engagement.</strong> Contactez-nous pour une analyse personnalisée de votre bien.</p>
+                💡 <strong>Estimation gratuite et sans engagement.</strong> Contactez-nous pour une analyse personnalisée de votre bien.
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section id="contact" class="cta-section">
+    <!-- Final CTA Section -->
+    <section class="final-cta" id="contact">
         <div class="container">
             <div class="cta-content">
                 <h2 class="cta-title">Prêt à maximiser vos revenus locatifs ?</h2>
                 <p class="cta-description">Contactez-nous dès aujourd'hui pour une estimation gratuite et personnalisée de votre bien.</p>
-                <div class="cta-actions">
-                    <a href="tel:0967343182" class="button button-primary button-large">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                <div class="cta-buttons">
+                    <a href="tel:0967343182" class="btn btn-cta">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         09 67 34 31 82
                     </a>
-                    <a href="mailto:contact@bymobility.fr" class="button button-secondary button-large">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
+                    <a href="mailto:contact@bymobility.fr" class="btn btn-cta">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         contact@bymobility.fr
                     </a>
@@ -399,40 +454,40 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
+            <div class="footer-grid">
+                <div class="footer-col">
                     <img src="https://bymobility.fr/wp-content/uploads/2024/09/IMG_76621-300x91.png" alt="ByMobility Logo" class="footer-logo">
                     <p class="footer-description">Expert en gestion locative courte durée et bail mobilité à Paris.</p>
                 </div>
-                <div class="footer-column">
+                <div class="footer-col">
                     <h4 class="footer-title">Contact</h4>
                     <ul class="footer-links">
                         <li><a href="tel:0967343182">09 67 34 31 82</a></li>
                         <li><a href="mailto:contact@bymobility.fr">contact@bymobility.fr</a></li>
-                        <li>44 Bd Beaumarchais<br>75011 Paris</li>
+                        <li><a href="https://maps.google.com/?q=44+Bd+Beaumarchais,+75011+Paris" target="_blank">44 Bd Beaumarchais, 75011 Paris</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
+                <div class="footer-col">
                     <h4 class="footer-title">Services</h4>
                     <ul class="footer-links">
                         <li><a href="#services">Gestion locative</a></li>
-                        <li><a href="#services">Bail mobilité</a></li>
+                        <li><a href="#bail-mobilite">Bail mobilité</a></li>
                         <li><a href="#services">Conciergerie</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
+                <div class="footer-col">
                     <h4 class="footer-title">Informations</h4>
                     <ul class="footer-links">
                         <li><a href="#process">Comment ça marche</a></li>
-                        <li><a href="#advantages">Nos avantages</a></li>
+                        <li><a href="#about">Nos avantages</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 ByMobility. Tous droits réservés.</p>
+                <p>© 2025 ByMobility. Tous droits réservés.</p>
                 <div class="footer-legal">
-                    <a href="#mentions">Mentions légales</a>
-                    <a href="#confidentialite">Politique de confidentialité</a>
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
                 </div>
             </div>
         </div>
