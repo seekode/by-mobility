@@ -288,18 +288,18 @@ button {
   z-index: 1000;
   width: calc(100% - 40px);
   max-width: 1200px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: var(--radius-full);
   border: 1px solid rgba(133, 110, 83, 0.1);
-  box-shadow: 0 8px 32px rgba(133, 110, 83, 0.12);
+  box-shadow: 0 2px 40px rgba(133, 110, 83, 0.08);
   transition: all var(--transition-base);
 }
 
 .nav.scrolled {
   box-shadow: 0 12px 40px rgba(133, 110, 83, 0.2);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.7);
   top: 10px;
 }
 
