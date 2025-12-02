@@ -421,7 +421,7 @@
     </section>
 
     <!-- Pricing Section -->
-    <section class="pricing">
+    <section class="pricing" id="tarifs">
       <div class="container">
         <div class="section-header">
           <span class="section-tag">Tarifs</span>
@@ -430,55 +430,266 @@
             Commission uniquement sur les revenus générés. Aucun frais caché.
           </p>
         </div>
-        <div class="pricing-grid">
-          <div class="pricing-card featured">
-            <div class="pricing-badge">Le plus demandé</div>
-            <div class="pricing-icon">🏠</div>
-            <h3 class="pricing-title">Location Courte Durée</h3>
-            <div class="pricing-price">
-              <span class="price-value">20%</span>
-              <span class="price-label"
-                >de commission sur les revenus locatifs</span
-              >
+
+        <!-- Pricing Toggle -->
+        <div class="pricing-toggle-wrapper">
+          <button class="pricing-toggle-btn active" data-plan="courte-duree">
+            <span class="toggle-icon">🏠</span>
+            <span class="toggle-label">Courte Durée</span>
+          </button>
+          <button class="pricing-toggle-btn" data-plan="bail-mobilite">
+            <span class="toggle-icon">📅</span>
+            <span class="toggle-label">Bail Mobilité</span>
+          </button>
+        </div>
+
+        <!-- Pricing Display -->
+        <div class="pricing-showcase">
+          <!-- Plan Courte Durée -->
+          <div class="pricing-plan" data-plan="courte-duree">
+            <div class="pricing-plan-header">
+              <div class="plan-badge">Le plus demandé</div>
+              <h3 class="plan-name">Location Courte Durée</h3>
+              <p class="plan-description">
+                Maximisez vos revenus avec la flexibilité de la location saisonnière
+              </p>
+              <div class="plan-price">
+                <span class="price-number">20</span>
+                <span class="price-symbol">%</span>
+                <span class="price-info">de commission<br>sur les revenus locatifs</span>
+              </div>
+              <a href="#contact" class="btn btn-primary plan-cta">Estimer mon bien</a>
             </div>
-            <ul class="pricing-features">
-              <li>Conseils d'optimisation</li>
-              <li>Création de l'annonce</li>
-              <li>Photos professionnelles</li>
-              <li>Mise en ligne sur toutes les plateformes</li>
-              <li>Tarification dynamique</li>
-              <li>Gestion complète des séjours</li>
-              <li>Gestion du ménage et de la maintenance</li>
-              <li>Account Manager dédié</li>
-            </ul>
-            <a href="#contact" class="btn btn-primary">Choisir ce plan</a>
+            <div class="pricing-plan-features">
+              <h4 class="features-title">Tout est inclus</h4>
+              <div class="features-grid">
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Conseils d'optimisation</strong>
+                    <span>Analyse personnalisée de votre bien</span>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Création de l'annonce</strong>
+                    <span>Rédaction optimisée SEO</span>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Photos professionnelles</strong>
+                    <span>Shooting HD de qualité</span>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Multi-plateformes</strong>
+                    <span>Airbnb, Booking, etc.</span>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Tarification dynamique</strong>
+                    <span>Prix ajustés en temps réel</span>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Gestion des séjours</strong>
+                    <span>Check-in/out, communication</span>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Ménage & maintenance</strong>
+                    <span>Entre chaque séjour</span>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Account Manager dédié</strong>
+                    <span>Un interlocuteur unique</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="pricing-card">
-            <div class="pricing-icon">📅</div>
-            <h3 class="pricing-title">Bail Mobilité</h3>
-            <div class="pricing-price">
-              <span class="price-value">15%</span>
-              <span class="price-label"
-                >de commission sur les revenus locatifs</span
-              >
+
+          <!-- Plan Bail Mobilité -->
+          <div class="pricing-plan" data-plan="bail-mobilite">
+            <div class="pricing-plan-header">
+              <div class="plan-badge stable">Le plus stable</div>
+              <h3 class="plan-name">Bail Mobilité</h3>
+              <p class="plan-description">
+                Revenus réguliers et locataires qualifiés pour 1 à 10 mois
+              </p>
+              <div class="plan-price">
+                <span class="price-number">15</span>
+                <span class="price-symbol">%</span>
+                <span class="price-info">de commission<br>sur les revenus locatifs</span>
+              </div>
+              <a href="#contact" class="btn btn-primary plan-cta">Estimer mon bien</a>
             </div>
-            <ul class="pricing-features">
-              <li>Conseils d'optimisation</li>
-              <li>Création de l'annonce</li>
-              <li>Photos professionnelles</li>
-              <li>Mise en ligne sur toutes les plateformes</li>
-              <li>Tarification dynamique</li>
-              <li>Gestion complète des séjours</li>
-              <li>Gestion du ménage et de la maintenance</li>
-              <li>Account Manager dédié</li>
-            </ul>
-            <a href="#contact" class="btn btn-secondary">Choisir ce plan</a>
+            <div class="pricing-plan-features">
+              <h4 class="features-title">Tout est inclus</h4>
+              <div class="features-grid">
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Conseils d'optimisation</strong>
+                    <span>Analyse personnalisée de votre bien</span>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Création de l'annonce</strong>
+                    <span>Rédaction optimisée SEO</span>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Photos professionnelles</strong>
+                    <span>Shooting HD de qualité</span>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Multi-plateformes</strong>
+                    <span>Sites spécialisés mobilité</span>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Locataires vérifiés</strong>
+                    <span>Dossiers qualifiés et solvables</span>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Gestion administrative</strong>
+                    <span>Contrats, états des lieux</span>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Ménage & maintenance</strong>
+                    <span>Entrée et sortie du locataire</span>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                  </div>
+                  <div class="feature-text">
+                    <strong>Account Manager dédié</strong>
+                    <span>Un interlocuteur unique</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="pricing-note">
-          💡
-          <strong>Estimation gratuite et sans engagement.</strong>
-          Contactez-nous pour une analyse personnalisée de votre bien.
+
+        <div class="pricing-footer">
+          <div class="pricing-guarantee">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+            <span>Estimation gratuite et sans engagement</span>
+          </div>
         </div>
       </div>
     </section>

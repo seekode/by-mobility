@@ -29,7 +29,7 @@ const DOM = {
   statNumbers: document.querySelectorAll(".stat-number"),
   forms: document.querySelectorAll("form"),
   animatedElements: document.querySelectorAll(
-    ".service-card, .benefit-card, .testimonial-card, .pricing-card, .process-step, .stat-highlight, .gallery-item",
+    ".service-card, .benefit-card, .testimonial-card, .pricing-plan, .process-step, .stat-highlight, .gallery-item",
   ),
 };
 
@@ -256,6 +256,88 @@ const Animations = {
   },
 };
 
+// ===== Pricing Toggle Module =====
+const PricingToggle = {
+  wrapper: document.querySelector(".pricing-toggle-wrapper"),
+  toggleBtns: document.querySelectorAll(".pricing-toggle-btn"),
+  showcase: document.querySelector(".pricing-showcase"),
+  plans: document.querySelectorAll(".pricing-plan"),
+  slider: null,
+  currentPlan: "courte-duree",
+
+  createSlider() {
+    if (!this.wrapper) return;
+
+    this.slider = document.createElement("div");
+    this.slider.className = "pricing-toggle-slider";
+    this.wrapper.appendChild(this.slider);
+
+    // Set initial slider position
+    this.updateSliderPosition();
+  },
+
+  updateSliderPosition() {
+    const activeBtn = this.wrapper.querySelector(".pricing-toggle-btn.active");
+    if (!activeBtn || !this.slider) return;
+
+    const wrapperRect = this.wrapper.getBoundingClientRect();
+    const btnRect = activeBtn.getBoundingClientRect();
+
+    this.slider.style.width = `${btnRect.width}px`;
+    this.slider.style.left = `${btnRect.left - wrapperRect.left}px`;
+  },
+
+  switchPlan(planId) {
+    if (planId === this.currentPlan) return;
+
+    this.currentPlan = planId;
+
+    // Update toggle buttons
+    this.toggleBtns.forEach((btn) => {
+      btn.classList.toggle("active", btn.dataset.plan === planId);
+    });
+
+    // Update slider position
+    this.updateSliderPosition();
+
+    // Update showcase class for 3D carousel effect
+    if (this.showcase) {
+      this.showcase.classList.toggle(
+        "bail-active",
+        planId === "bail-mobilite",
+      );
+    }
+  },
+
+  init() {
+    if (!this.toggleBtns.length) return;
+
+    this.createSlider();
+
+    // Toggle button clicks
+    this.toggleBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        this.switchPlan(btn.dataset.plan);
+      });
+    });
+
+    // Card clicks - switch to clicked card
+    this.plans.forEach((plan) => {
+      plan.addEventListener("click", () => {
+        const planId = plan.dataset.plan;
+        if (planId !== this.currentPlan) {
+          this.switchPlan(planId);
+        }
+      });
+    });
+
+    // Update slider on resize
+    window.addEventListener("resize", debounce(() => {
+      this.updateSliderPosition();
+    }, 100));
+  },
+};
+
 // ===== Form Module =====
 const Form = {
   showSuccess() {
@@ -309,6 +391,7 @@ const init = () => {
   SmoothScroll.init();
   VideoModal.init();
   Animations.init();
+  PricingToggle.init();
   Form.init();
 
   // Single scroll listener for all scroll-related functions
