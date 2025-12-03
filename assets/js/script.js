@@ -29,7 +29,7 @@ const DOM = {
   statNumbers: document.querySelectorAll(".stat-number"),
   forms: document.querySelectorAll("form"),
   animatedElements: document.querySelectorAll(
-    ".service-card, .benefit-card, .testimonial-card, .pricing-plan, .process-step, .stat-highlight, .gallery-item",
+    ".service-card, .benefit-card, .testimonial-card, .pricing-plan, .process-step, .stat-highlight, .gallery-item, .team-member, .pricing-toggle-wrapper, .pricing-showcase, .contact-info, .contact-form-wrapper, .contact-detail",
   ),
 };
 
@@ -210,16 +210,18 @@ const Animations = {
       return;
     }
 
-    // Scroll animations observer
+    // Scroll animations observer - bidirectional (animate in and out)
     const scrollObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+          } else {
+            entry.target.classList.remove("visible");
           }
         });
       },
-      { threshold: 0.2, rootMargin: "0px 0px -100px 0px" },
+      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" },
     );
 
     DOM.animatedElements.forEach((element) => {
@@ -374,15 +376,6 @@ const handleScroll = debounce(() => {
 // ===== Hero Load Animation =====
 const initHeroAnimation = () => {
   document.body.classList.add("loaded");
-
-  if (Animations.prefersReducedMotion) return;
-
-  document.querySelectorAll(".hero .animate-in").forEach((element, index) => {
-    setTimeout(() => {
-      element.style.opacity = "1";
-      element.style.transform = "translateY(0)";
-    }, index * 100);
-  });
 };
 
 // ===== Initialize App =====
