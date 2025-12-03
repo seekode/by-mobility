@@ -221,7 +221,7 @@ const Animations = {
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" },
+      { threshold: 0.05, rootMargin: "50px 0px 0px 0px" },
     );
 
     DOM.animatedElements.forEach((element) => {
@@ -366,9 +366,14 @@ const Form = {
   },
 };
 
-// ===== Unified Scroll Handler =====
-const handleScroll = debounce(() => {
+// ===== Scroll Handlers =====
+// Navigation scroll - instant, no debounce for responsive feel
+const handleNavScroll = () => {
   Navigation.handleScroll();
+};
+
+// Other scroll effects - debounced for performance
+const handleScrollEffects = debounce(() => {
   Navigation.highlightActiveLink();
   Animations.handleParallax();
 }, 10);
@@ -387,8 +392,10 @@ const init = () => {
   PricingToggle.init();
   Form.init();
 
-  // Single scroll listener for all scroll-related functions
-  window.addEventListener("scroll", handleScroll);
+  // Navigation scroll - instant response
+  window.addEventListener("scroll", handleNavScroll);
+  // Other scroll effects - debounced
+  window.addEventListener("scroll", handleScrollEffects);
 
   // Load animation
   window.addEventListener("load", initHeroAnimation);
