@@ -25,6 +25,7 @@ const DOM = {
   videoModalClose: document.getElementById("videoModalClose"),
   videoIframe: document.getElementById("videoIframe"),
   parallaxElements: document.querySelectorAll(".gradient-orb"),
+  heroBgImage: document.querySelector(".hero-bg-image"),
   statsCards: document.querySelectorAll(".stat-highlight"),
   statNumbers: document.querySelectorAll(".stat-number"),
   forms: document.querySelectorAll("form"),
@@ -196,6 +197,15 @@ const Animations = {
       const speed = 0.3 + index * 0.1;
       element.style.transform = `translateY(${-(scrolled * speed)}px)`;
     });
+
+    // Hero background parallax
+    if (DOM.heroBgImage) {
+      const heroHeight = window.innerHeight;
+      if (scrolled < heroHeight) {
+        const parallaxSpeed = 0.4;
+        DOM.heroBgImage.style.transform = `translateX(-50%) translateY(${scrolled * parallaxSpeed}px)`;
+      }
+    }
   },
 
   init() {
@@ -370,12 +380,12 @@ const Form = {
 // Navigation scroll - instant, no debounce for responsive feel
 const handleNavScroll = () => {
   Navigation.handleScroll();
+  Animations.handleParallax();
 };
 
 // Other scroll effects - debounced for performance
 const handleScrollEffects = debounce(() => {
   Navigation.highlightActiveLink();
-  Animations.handleParallax();
 }, 10);
 
 // ===== Hero Load Animation =====
