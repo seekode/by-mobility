@@ -19,16 +19,14 @@ const DOM = {
   navMenu: document.getElementById("navMenu"),
   navLinks: document.querySelectorAll(".nav-link"),
   sections: document.querySelectorAll("section[id]"),
-  scrollIndicator: document.querySelector(".scroll-indicator"),
   videoBtn: document.getElementById("videoBtn"),
   videoModal: document.getElementById("videoModal"),
   videoModalClose: document.getElementById("videoModalClose"),
   videoIframe: document.getElementById("videoIframe"),
-  parallaxElements: document.querySelectorAll(".gradient-orb"),
-  heroBgImage: document.querySelector(".hero-bg-image"),
   statsCards: document.querySelectorAll(".stat-highlight"),
-  statNumbers: document.querySelectorAll(".stat-number"),
+  statNumbers: document.querySelectorAll(".hero-stat-number, .stat-number"),
   forms: document.querySelectorAll("form"),
+  scrollIndicator: document.querySelector(".scroll-indicator"),
   animatedElements: document.querySelectorAll(
     ".service-card, .benefit-card, .testimonial-card, .pricing-plan, .process-step, .stat-highlight, .gallery-item, .team-member, .pricing-toggle-wrapper, .pricing-showcase, .contact-info, .contact-form-wrapper, .contact-detail",
   ),
@@ -111,13 +109,6 @@ const SmoothScroll = {
   },
 
   init() {
-    // Scroll indicator
-    if (DOM.scrollIndicator) {
-      DOM.scrollIndicator.addEventListener("click", () => {
-        this.scrollTo("#services");
-      });
-    }
-
     // Anchor links
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener("click", (e) => {
@@ -189,24 +180,6 @@ const Animations = {
     update();
   },
 
-  handleParallax() {
-    if (this.prefersReducedMotion) return;
-
-    const scrolled = window.pageYOffset;
-    DOM.parallaxElements.forEach((element, index) => {
-      const speed = 0.3 + index * 0.1;
-      element.style.transform = `translateY(${-(scrolled * speed)}px)`;
-    });
-
-    // Hero background parallax
-    if (DOM.heroBgImage) {
-      const heroHeight = window.innerHeight;
-      if (scrolled < heroHeight) {
-        const parallaxSpeed = 0.4;
-        DOM.heroBgImage.style.transform = `translateX(-50%) translateY(${scrolled * parallaxSpeed}px)`;
-      }
-    }
-  },
 
   init() {
     // Respect reduced motion preference
@@ -262,9 +235,6 @@ const Animations = {
     DOM.statsCards.forEach((card, index) => {
       card.style.animationDelay = `${index * 0.2}s`;
     });
-
-    // Initial parallax
-    this.handleParallax();
   },
 };
 
@@ -380,7 +350,6 @@ const Form = {
 // Navigation scroll - instant, no debounce for responsive feel
 const handleNavScroll = () => {
   Navigation.handleScroll();
-  Animations.handleParallax();
 };
 
 // Other scroll effects - debounced for performance
@@ -393,6 +362,31 @@ const initHeroAnimation = () => {
   document.body.classList.add("loaded");
 };
 
+// ===== Scroll Indicator Module =====
+const ScrollIndicator = {
+  init() {
+    if (!DOM.scrollIndicator) return;
+
+    DOM.scrollIndicator.addEventListener("click", () => {
+      SmoothScroll.scrollTo("#services");
+    });
+
+    // Hide on scroll
+    let lastScroll = 0;
+    window.addEventListener("scroll", debounce(() => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > 100) {
+        DOM.scrollIndicator.style.opacity = "0";
+        DOM.scrollIndicator.style.pointerEvents = "none";
+      } else {
+        DOM.scrollIndicator.style.opacity = "1";
+        DOM.scrollIndicator.style.pointerEvents = "auto";
+      }
+      lastScroll = currentScroll;
+    }, 50));
+  },
+};
+
 // ===== Initialize App =====
 const init = () => {
   Navigation.init();
@@ -401,6 +395,7 @@ const init = () => {
   Animations.init();
   PricingToggle.init();
   Form.init();
+  ScrollIndicator.init();
 
   // Navigation scroll - instant response
   window.addEventListener("scroll", handleNavScroll);

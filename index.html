@@ -49,53 +49,81 @@
     </nav>
 
     <!-- Hero Section -->
-    <!--src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1920&h=1080&fit=crop&q=80"-->
     <section class="hero" id="accueil">
-      <div class="hero-background">
-        <img
-          src="assets/img/header.jpg"
-          alt="Paris skyline"
-          class="hero-bg-image"
-        />
-        <div class="hero-overlay"></div>
+      <!-- Decorative elements -->
+      <div class="hero-decorations">
+        <div class="hero-shape hero-shape-1"></div>
+        <div class="hero-shape hero-shape-2"></div>
+        <div class="hero-shape hero-shape-3"></div>
+        <div class="hero-particles">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <!-- Animated lines -->
+        <div class="hero-lines">
+          <span></span><span></span><span></span>
+        </div>
       </div>
-      <div class="hero-logo-watermark">
-        <img src="assets/img/logo.png" alt="ByMobility" />
-      </div>
-      <div class="container hero-container">
+
+      <div class="hero-grid">
+        <!-- Left: Content -->
         <div class="hero-content">
-          <div class="hero-badge animate-in">
+          <div class="hero-badge" data-animate="fade-down">
             <span>★</span> Conciergerie Premium à Paris <span>★</span>
           </div>
-          <h1 class="hero-title animate-in">
+          <h1 class="hero-title" data-animate="fade-up">
             Transformez votre bien en
-            <span class="gradient-text">investissement rentable</span>
+            <span class="hero-title-accent">investissement rentable</span>
           </h1>
-          <div class="hero-cta">
+          <p class="hero-subtitle" data-animate="fade-up" data-delay="100">
+            Experts en gestion locative courte durée et bail mobilité.
+            Maximisez vos revenus en toute sérénité.
+          </p>
+          <div class="hero-cta" data-animate="fade-up" data-delay="200">
             <a href="#contact" class="btn btn-primary">Estimer mon bien</a>
-            <a href="#services" class="btn btn-secondary"
-              >Découvrir nos services</a
-            >
+            <a href="#services" class="btn btn-outline">Découvrir nos services</a>
           </div>
-          <div class="hero-stats">
-            <div class="stat-card">
-              <div class="stat-number" data-target="80">0</div>
-              <div class="stat-label">Propriétaires</div>
+          <div class="hero-stats" data-animate="fade-up" data-delay="300">
+            <div class="hero-stat">
+              <div class="hero-stat-number" data-target="80">0</div>
+              <div class="hero-stat-label">Propriétaires</div>
             </div>
-            <div class="stat-card">
-              <div class="stat-number" data-target="100">0</div>
-              <div class="stat-label">Biens en gestion</div>
+            <div class="hero-stat">
+              <div class="hero-stat-number" data-target="100">0</div>
+              <div class="hero-stat-label">Biens en gestion</div>
             </div>
-            <div class="stat-card">
-              <div class="stat-number" data-target="3">0</div>
-              <div class="stat-label">M€ Actifs en gestion</div>
+            <div class="hero-stat">
+              <div class="hero-stat-number" data-target="3">0</div>
+              <div class="hero-stat-label">M€ d'actifs</div>
             </div>
           </div>
         </div>
+        <!-- Right: Image -->
+        <div class="hero-image-wrapper" data-animate="fade-left" data-delay="200">
+          <div class="hero-image-container">
+            <img
+              src="assets/img/header.jpg"
+              alt="Vue de Paris"
+              class="hero-image"
+            />
+            <div class="hero-image-overlay"></div>
+          </div>
+          <div class="hero-image-decoration"></div>
+          <div class="hero-image-glow"></div>
+        </div>
       </div>
+
+      <!-- Scroll indicator -->
       <div class="scroll-indicator">
-        <div class="mouse">
-          <div class="wheel"></div>
+        <div class="scroll-indicator-inner">
+          <span class="scroll-text">Découvrir</span>
+          <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
+          </div>
+          <div class="scroll-arrow">
+            <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+              <path d="M7.29 23.71a1 1 0 001.42 0l6.36-6.36a1 1 0 00-1.42-1.42L8 21.59l-5.65-5.66a1 1 0 00-1.42 1.42l6.36 6.36zM7 0v23h2V0H7z" fill="currentColor"/>
+            </svg>
+          </div>
         </div>
       </div>
     </section>
