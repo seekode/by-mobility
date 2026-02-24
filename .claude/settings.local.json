@@ -1,23 +1,27 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:bymobility.fr)",
+      "WebFetch(domain:bymobility.v1.seekode.dev)",
+      "WebFetch(domain:jills-hotel.webflow.io)",
+      "Bash(dir:*)",
+      "mcp__svelte__list-sections",
+      "mcp__svelte__get-documentation",
+      "Bash(bunx create-svelte@latest:*)",
+      "Bash(bunx sv create:*)",
+      "Bash(bun install)",
+      "Bash(bun run build:*)",
+      "Bash(curl:*)",
       "mcp__chrome-devtools__list_pages",
       "mcp__chrome-devtools__navigate_page",
       "mcp__chrome-devtools__take_screenshot",
-      "Bash(dir:*)",
-      "Bash(findstr:*)",
-      "WebFetch(domain:jills-hotel.webflow.io)",
-      "Bash(powershell -Command \"\\(Get-Content ''D:\\\\Development\\\\work\\\\byMobility\\\\index.html'' -Raw\\) -replace ''assets/img/'', ''../assets/img/'' | Set-Content ''D:\\\\Development\\\\work\\\\byMobility\\\\v2\\\\index.html'' -NoNewline\")",
-      "Bash(powershell -Command:*)",
-      "Bash(ls -la \"D:\\\\Development\\\\work\\\\byMobility\\\\v2\"\" && ls -la \"D:DevelopmentworkbyMobilityv2assetscss\"\")",
-      "mcp__chrome-devtools__new_page",
       "mcp__chrome-devtools__evaluate_script",
+      "mcp__chrome-devtools__emulate",
       "mcp__chrome-devtools__take_snapshot",
       "mcp__chrome-devtools__click",
-      "mcp__chrome-devtools__list_console_messages"
-    ],
-    "deny": [],
-    "ask": []
+      "mcp__chrome-devtools__list_console_messages",
+      "Bash(bun run:*)",
+      "Bash(npx vite dev:*)",
+      "Bash(npx serve -l 3000 .)"
+    ]
   }
 }
