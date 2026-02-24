@@ -387,8 +387,128 @@ const ScrollIndicator = {
   },
 };
 
+// ===== Theme Switcher Module =====
+const ThemeSwitcher = {
+  themes: [
+    { id: "or-ivoire", label: "Or & Ivoire", icon: "\u2726", dark: false },
+    { id: "marbre-blanc", label: "Marbre Blanc", icon: "\u25C7", dark: false },
+    { id: "rose-parisien", label: "Rose Parisien", icon: "\u274B", dark: false },
+    { id: "creme-emeraude", label: "Cr\u00e8me & \u00c9meraude", icon: "\u2756", dark: false },
+    { id: "noir-or", label: "Noir & Or", icon: "\u2605", dark: true },
+    { id: "nuit-parisienne", label: "Nuit Parisienne", icon: "\u263E", dark: true },
+    { id: "obsidienne", label: "Obsidienne", icon: "\u25C6", dark: true },
+  ],
+
+  currentIndex: 0,
+  btn: null,
+  tooltip: null,
+  tooltipTimeout: null,
+  STORAGE_KEY: "bymobility-theme",
+
+  getStoredTheme() {
+    try {
+      return localStorage.getItem(this.STORAGE_KEY);
+    } catch {
+      return null;
+    }
+  },
+
+  storeTheme(themeId) {
+    try {
+      localStorage.setItem(this.STORAGE_KEY, themeId);
+    } catch {
+      // localStorage unavailable
+    }
+  },
+
+  applyTheme(themeId, animate = true) {
+    const themeIndex = this.themes.findIndex((t) => t.id === themeId);
+    if (themeIndex === -1) return;
+
+    this.currentIndex = themeIndex;
+    const theme = this.themes[themeIndex];
+
+    if (animate) {
+      document.documentElement.classList.add("theme-transitioning");
+    }
+
+    if (themeId === "or-ivoire") {
+      document.documentElement.removeAttribute("data-theme");
+    } else {
+      document.documentElement.setAttribute("data-theme", themeId);
+    }
+
+    if (this.btn) {
+      this.btn.querySelector(".theme-switcher-icon").textContent = theme.icon;
+    }
+
+    if (animate) {
+      this.showTooltip(theme.label);
+    }
+
+    this.storeTheme(themeId);
+
+    if (animate) {
+      setTimeout(() => {
+        document.documentElement.classList.remove("theme-transitioning");
+      }, 550);
+    }
+  },
+
+  cycleTheme() {
+    const nextIndex = (this.currentIndex + 1) % this.themes.length;
+    this.applyTheme(this.themes[nextIndex].id);
+  },
+
+  showTooltip(text) {
+    if (!this.tooltip) return;
+    clearTimeout(this.tooltipTimeout);
+    this.tooltip.textContent = text;
+    this.tooltip.classList.add("visible");
+    this.tooltipTimeout = setTimeout(() => {
+      this.tooltip.classList.remove("visible");
+    }, 2000);
+  },
+
+  createButton() {
+    const container = document.createElement("div");
+    container.className = "theme-switcher";
+
+    const btn = document.createElement("button");
+    btn.className = "theme-switcher-btn";
+    btn.setAttribute("aria-label", "Changer de th\u00e8me");
+
+    const icon = document.createElement("span");
+    icon.className = "theme-switcher-icon";
+    icon.textContent = this.themes[this.currentIndex].icon;
+    btn.appendChild(icon);
+
+    const tooltip = document.createElement("span");
+    tooltip.className = "theme-switcher-tooltip";
+
+    container.appendChild(btn);
+    container.appendChild(tooltip);
+    document.body.appendChild(container);
+
+    this.btn = btn;
+    this.tooltip = tooltip;
+  },
+
+  init() {
+    this.createButton();
+
+    const savedTheme = this.getStoredTheme();
+    if (savedTheme) {
+      this.applyTheme(savedTheme, false);
+    }
+
+    this.btn.addEventListener("click", () => this.cycleTheme());
+  },
+};
+
 // ===== Initialize App =====
 const init = () => {
+  ThemeSwitcher.init();
   Navigation.init();
   SmoothScroll.init();
   VideoModal.init();
