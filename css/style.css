@@ -764,9 +764,49 @@ h4 {
   overflow: hidden;
 }
 
+/* Lens flare — points lumineux alignés comme le soleil sur une vitre */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    /* Source solaire — halo chaud diffus en haut à droite */
+    radial-gradient(
+      ellipse 140px 140px at 82% 8%,
+      rgba(255, 248, 220, 0.7) 0%,
+      transparent 100%
+    ),
+    /* Couronne autour de la source */
+    radial-gradient(
+        ellipse 120px 120px at 76% 20%,
+        rgba(255, 248, 220, 0.5) 0%,
+        transparent 100%
+      ),
+    /* Reflet 1 — petit point vif */
+    radial-gradient(
+        circle 7px at 76% 20%,
+        rgba(255, 255, 255, 0.82) 0%,
+        transparent 100%
+      ),
+    /* Couronne autour de la source */
+    radial-gradient(
+        ellipse 80px 80px at 70% 30%,
+        rgba(255, 248, 220, 0.3) 0%,
+        transparent 100%
+      ),
+    /* Reflet 1 — petit point vif */
+    radial-gradient(
+        circle 7px at 70% 30%,
+        rgba(255, 255, 255, 0.82) 0%,
+        transparent 100%
+      );
+}
+
 .hero__bg {
   position: absolute;
-  inset: -15% 0;
+  inset: -28% 0;
   z-index: 0;
 }
 
@@ -790,8 +830,21 @@ h4 {
   );
 
   /* Verre dépoli : flou de l'image en arrière-plan */
-  backdrop-filter: blur(14px) saturate(0.85) brightness(1.05);
-  -webkit-backdrop-filter: blur(14px) saturate(0.85) brightness(1.05);
+  backdrop-filter: blur(20px) saturate(0.8) brightness(1.04);
+  -webkit-backdrop-filter: blur(20px) saturate(0.8) brightness(1.04);
+
+  /* Épaisseur de vitre — bords luminescents sur les 4 côtés */
+  box-shadow:
+    /* Ligne fine lumineuse sur chaque bord */
+    inset 0 2px 0 rgba(255, 255, 255, 0.72),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.52),
+    inset 2px 0 0 rgba(255, 255, 255, 0.52),
+    inset -2px 0 0 rgba(255, 255, 255, 0.38),
+    /* Halo lumineux derrière chaque ligne */ inset 0 8px 16px -4px
+      rgba(255, 255, 255, 0.38),
+    inset 0 -8px 16px -4px rgba(255, 255, 255, 0.26),
+    inset 8px 0 16px -4px rgba(255, 255, 255, 0.26),
+    inset -8px 0 16px -4px rgba(255, 255, 255, 0.18);
 }
 
 /* Grain physique — texture de verre */
@@ -800,26 +853,34 @@ h4 {
   position: absolute;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23grain)' opacity='1'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-  opacity: 0.038;
-  mix-blend-mode: overlay;
+  background-size: 180px 180px;
+  opacity: 0.4;
+  mix-blend-mode: soft-light;
   pointer-events: none;
   border-radius: inherit;
 }
 
-/* Reflet spéculaire — lustre de verre en haut */
+/* Reflet spéculaire + vignette profondeur */
 .hero__overlay::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.28) 0%,
-    rgba(255, 255, 255, 0.06) 18%,
-    rgba(255, 255, 255, 0) 40%,
-    rgba(255, 255, 255, 0) 80%,
-    rgba(255, 255, 255, 0.08) 100%
-  );
+  background:
+    /* Vignette coins — profondeur de champ */
+    radial-gradient(
+      ellipse 88% 75% at 50% 50%,
+      transparent 38%,
+      rgba(18, 28, 48, 0.22) 100%
+    ),
+    /* Reflet spéculaire diagonal — lustre de verre */
+    linear-gradient(
+        148deg,
+        rgba(255, 255, 255, 0.42) 0%,
+        rgba(255, 255, 255, 0.1) 12%,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0) 78%,
+        rgba(255, 255, 255, 0.09) 100%
+      );
   pointer-events: none;
 }
 
@@ -915,16 +976,22 @@ h4 {
 
 .scroll-text {
   font-size: var(--fs-xs);
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--navy-900);
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 0.9),
+    0 1px 3px rgba(255, 255, 255, 0.7);
 }
 
 .scroll-line {
-  width: 1px;
-  height: 40px;
-  background: var(--gold-600);
+  width: 2px;
+  height: 44px;
+  background: linear-gradient(180deg, var(--gold-500) 0%, var(--gold-600) 100%);
+  box-shadow:
+    0 0 8px rgba(197, 165, 114, 0.7),
+    0 0 2px rgba(197, 165, 114, 1);
   animation: scroll-indicator 2s ease-in-out infinite;
 }
 
