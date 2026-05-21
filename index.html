@@ -39,20 +39,37 @@
     />
     <meta name="twitter:image" content="https://bymobility.fr/og-image.jpg" />
 
-    <!-- Favicon -->
+    <!-- Favicon & icônes -->
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230B1528'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23C9A96E'>B</text></svg>"
       type="image/svg+xml"
     />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0b1528" />
 
+    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Fonts Google – preconnect + chargement asynchrone (non render-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap"
+      />
+    </noscript>
   </head>
   <body>
     <!-- ═══════════════════════════════════════════
@@ -127,8 +144,8 @@
           </h1>
           <p class="hero__subtitle">
             Gestion locative haut de gamme pour propriétaires exigeants.<br />
-            Courte durée &amp; bail mobilité — 80 propriétaires nous font
-            confiance, 100 biens en gestion.
+            Courte durée &amp; bail mobilité — 150 propriétaires nous font
+            confiance, 250 biens en gestion.
           </p>
           <div class="hero__ctas">
             <a href="#contact" class="btn btn--primary">Estimer mes revenus</a>
@@ -1422,53 +1439,43 @@
             </header>
           </div>
 
-          <div class="team__members">
-            <div class="reveal reveal--slide-right">
-              <article class="member">
-                <div class="member__image">
-                  <img
-                    src="img/team/Dan.jpg"
-                    alt="Portrait de Dan"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="member__info">
-                  <h3 class="member__name">Dan</h3>
-                  <span class="micro-label member__role"
-                    >Co-fondateur &amp; Directeur des opérations</span
-                  >
-                  <p class="member__bio">
-                    Passionné par l'immobilier et l'hospitalité, Dan supervise
-                    l'ensemble des opérations de ByMobility. Son expertise en
-                    gestion locative et sa connaissance approfondie du marché
-                    parisien garantissent un service d'excellence à chaque
-                    propriétaire.
-                  </p>
-                </div>
-              </article>
+          <div class="team__duo">
+            <div class="team__duo__photo reveal reveal--slide-right">
+              <img
+                src="img/team.webp"
+                alt="Léa et Dan Bouhadana, co-fondateurs de ByMobility"
+                loading="lazy"
+              />
             </div>
 
-            <div class="reveal reveal--slide-left">
-              <article class="member reverse">
-                <div class="member__image">
-                  <img
-                    src="img/team/Lea_Bouhadana.jpg"
-                    alt="Portrait de Léa"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="member__info">
-                  <h3 class="member__name">Léa</h3>
-                  <span class="micro-label member__role"
-                    >Co-fondatrice &amp; Directrice de l'expérience client</span
-                  >
-                  <p class="member__bio">
-                    Léa veille à ce que chaque voyageur et chaque propriétaire
-                    bénéficie d'une expérience irréprochable. Son attention aux
-                    détails et son sens du service transforment chaque séjour en
-                    un moment d'exception.
-                  </p>
-                </div>
+            <div class="team__duo__info reveal reveal--slide-left">
+              <article class="team__duo__member">
+                <h3 class="member__name">Léa Bouhadana</h3>
+                <span class="micro-label member__role"
+                  >Co-fondatrice &amp; Présidente</span
+                >
+                <p class="member__bio">
+                  Léa veille à ce que chaque voyageur et chaque propriétaire
+                  bénéficie d'une expérience irréprochable. Son attention aux
+                  détails et son sens du service transforment chaque séjour en
+                  un moment d'exception.
+                </p>
+              </article>
+
+              <div class="team__duo__sep" aria-hidden="true"></div>
+
+              <article class="team__duo__member">
+                <h3 class="member__name">Dan Bouhadana</h3>
+                <span class="micro-label member__role"
+                  >Co-fondateur &amp; Directeur des opérations</span
+                >
+                <p class="member__bio">
+                  Passionné par l'immobilier et l'hospitalité, Dan supervise
+                  l'ensemble des opérations de ByMobility. Son expertise en
+                  gestion locative et sa connaissance approfondie du marché
+                  parisien garantissent un service d'excellence à chaque
+                  propriétaire.
+                </p>
               </article>
             </div>
           </div>
@@ -1513,11 +1520,12 @@
           </div>
 
           <div class="portfolio__grid">
+            <!-- Ligne 1 -->
             <div class="reveal reveal--fade-up property-card large">
               <div class="property-card__image">
                 <img
-                  src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop"
-                  alt="Appartement Haussmannien"
+                  src="img/photos/1.webp"
+                  alt="Cour intérieure pavée d'un immeuble parisien avec végétation luxuriante"
                   loading="lazy"
                 />
                 <div class="property-card__overlay">
@@ -1525,10 +1533,10 @@
                     >Courte durée</span
                   >
                   <h3 class="property-card__title-text">
-                    Appartement Haussmannien
+                    Cour Intérieure Parisienne
                   </h3>
                   <p class="property-card__location">
-                    Paris 8e – Champs-Élysées
+                    Paris 11e – Beaumarchais
                   </p>
                 </div>
               </div>
@@ -1540,15 +1548,40 @@
             >
               <div class="property-card__image">
                 <img
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop"
-                  alt="Loft Contemporain"
+                  src="img/photos/2.webp"
+                  alt="Boulevard haussmannien bordé d'arbres et d'immeubles de pierre"
                   loading="lazy"
                 />
                 <div class="property-card__overlay">
                   <span class="micro-label property-card__type"
                     >Courte durée</span
                   >
-                  <h3 class="property-card__title-text">Loft Contemporain</h3>
+                  <h3 class="property-card__title-text">
+                    Boulevard Haussmannien
+                  </h3>
+                  <p class="property-card__location">Paris 11e</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ligne 2 -->
+            <div
+              class="reveal reveal--fade-up property-card"
+              style="--delay: 150ms"
+            >
+              <div class="property-card__image">
+                <img
+                  src="img/photos/3.webp"
+                  alt="Cuisine design bleue avec plan de travail en marbre noir et verrière"
+                  loading="lazy"
+                />
+                <div class="property-card__overlay">
+                  <span class="micro-label property-card__type"
+                    >Courte durée</span
+                  >
+                  <h3 class="property-card__title-text">
+                    Cuisine Verrière &amp; Marbre
+                  </h3>
                   <p class="property-card__location">Paris 11e – Bastille</p>
                 </div>
               </div>
@@ -1560,30 +1593,49 @@
             >
               <div class="property-card__image">
                 <img
-                  src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop"
-                  alt="Studio Design"
+                  src="img/photos/4.webp"
+                  alt="Salon avec banquette bohème et table ronde, décor bleu canard"
                   loading="lazy"
                 />
                 <div class="property-card__overlay">
                   <span class="micro-label property-card__type"
                     >Bail mobilité</span
                   >
-                  <h3 class="property-card__title-text">Studio Design</h3>
-                  <p class="property-card__location">
-                    Paris 6e – Saint-Germain
-                  </p>
+                  <h3 class="property-card__title-text">Espace Salon Bohème</h3>
+                  <p class="property-card__location">Paris 11e – Bastille</p>
                 </div>
               </div>
             </div>
 
+            <div
+              class="reveal reveal--fade-up property-card"
+              style="--delay: 250ms"
+            >
+              <div class="property-card__image">
+                <img
+                  src="img/photos/5.webp"
+                  alt="Chambre mansardée avec poutres apparentes, tête de lit bleu et vue sur les toits"
+                  loading="lazy"
+                />
+                <div class="property-card__overlay">
+                  <span class="micro-label property-card__type"
+                    >Bail mobilité</span
+                  >
+                  <h3 class="property-card__title-text">Chambre Mansardée</h3>
+                  <p class="property-card__location">Paris 11e – Bastille</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ligne 3 -->
             <div
               class="reveal reveal--fade-up property-card large"
               style="--delay: 300ms"
             >
               <div class="property-card__image">
                 <img
-                  src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop"
-                  alt="Penthouse Vue Tour Eiffel"
+                  src="img/photos/6.webp"
+                  alt="Vue sur les toits de Paris depuis une fenêtre avec clocher au loin"
                   loading="lazy"
                 />
                 <div class="property-card__overlay">
@@ -1591,29 +1643,33 @@
                     >Courte durée</span
                   >
                   <h3 class="property-card__title-text">
-                    Penthouse Vue Tour Eiffel
+                    Vue sur les Toits de Paris
                   </h3>
-                  <p class="property-card__location">Paris 16e – Trocadéro</p>
+                  <p class="property-card__location">
+                    Paris 11e – Beaumarchais
+                  </p>
                 </div>
               </div>
             </div>
 
             <div
               class="reveal reveal--fade-up property-card"
-              style="--delay: 400ms"
+              style="--delay: 350ms"
             >
               <div class="property-card__image">
                 <img
-                  src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=800&h=600&fit=crop"
-                  alt="Duplex Marais"
+                  src="img/photos/7.webp"
+                  alt="Salle de bain avec carrelage zelliges, robinetterie dorée et douche en verre"
                   loading="lazy"
                 />
                 <div class="property-card__overlay">
                   <span class="micro-label property-card__type"
-                    >Bail mobilité</span
+                    >Courte durée</span
                   >
-                  <h3 class="property-card__title-text">Duplex Marais</h3>
-                  <p class="property-card__location">Paris 4e – Le Marais</p>
+                  <h3 class="property-card__title-text">
+                    Salle de Bain Zelliges
+                  </h3>
+                  <p class="property-card__location">Paris 11e – Bastille</p>
                 </div>
               </div>
             </div>
@@ -1697,7 +1753,7 @@
                         d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"
                       />
                     </svg>
-                    <a href="tel:+33XXXXXXXXX">+33 1 XX XX XX XX</a>
+                    <a href="tel:+33658651317">06 58 65 13 17</a>
                   </div>
                   <div class="contact__item">
                     <svg
@@ -1720,58 +1776,73 @@
             </div>
 
             <div class="reveal reveal--slide-left">
-              <form class="contact__form" onsubmit="event.preventDefault()">
-                <div class="form-group">
-                  <label for="name">Nom complet</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Votre nom"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="votre@email.com"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="phone">Téléphone</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="+33 6 XX XX XX XX"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="service">Service souhaité</label>
-                  <select id="service" name="service">
-                    <option value="">Sélectionnez un service</option>
-                    <option value="courte-duree">Location courte durée</option>
-                    <option value="bail-mobilite">Bail mobilité</option>
-                    <option value="autre">Autre demande</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="message">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="4"
-                    placeholder="Décrivez votre projet..."
-                  ></textarea>
-                </div>
-                <button type="submit" class="btn btn--primary">
-                  Envoyer ma demande
-                </button>
-              </form>
+              <div class="contact__form-wrapper">
+                <form id="contact-form" class="contact__form" novalidate>
+                  <!-- Honeypot anti-spam (ne pas toucher) -->
+                  <div class="contact__honeypot" aria-hidden="true">
+                    <input
+                      type="text"
+                      name="website"
+                      tabindex="-1"
+                      autocomplete="off"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="name">Nom complet</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="Votre nom"
+                      autocomplete="name"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="votre@email.com"
+                      autocomplete="email"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="+33 6 XX XX XX XX"
+                      autocomplete="tel"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="service">Service souhaité</label>
+                    <select id="service" name="service">
+                      <option value="">Sélectionnez un service</option>
+                      <option value="courte-duree">
+                        Location courte durée
+                      </option>
+                      <option value="bail-mobilite">Bail mobilité</option>
+                      <option value="autre">Autre demande</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="4"
+                      placeholder="Décrivez votre projet..."
+                    ></textarea>
+                  </div>
+                  <button type="submit" class="btn btn--primary btn--submit">
+                    Envoyer ma demande
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -1813,8 +1884,8 @@
               <li>
                 <a href="mailto:contact@bymobility.fr">contact@bymobility.fr</a>
               </li>
-              <li><a href="tel:+33XXXXXXXXX">+33 1 XX XX XX XX</a></li>
-              <li>Paris, France</li>
+              <li><a href="tel:+33658651317">06 58 65 13 17</a></li>
+              <li>44 Bd Beaumarchais, 75011 Paris</li>
             </ul>
           </div>
 
@@ -1850,7 +1921,10 @@
         </div>
 
         <div class="footer__bottom">
-          <p>&copy; 2026 ByMobility. Tous droits réservés.</p>
+          <p>
+            &copy; 2026 BY MOBILITY – SAS au capital de 1 200 € – SIREN 978 862
+            316 – RCS Paris
+          </p>
           <a href="mentions-legales.html">Mentions légales</a>
         </div>
       </div>
@@ -1864,18 +1938,20 @@
         "name": "ByMobility",
         "description": "ByMobility, votre conciergerie parisienne d'exception. Gestion locative courte durée et bail mobilité pour propriétaires exigeants.",
         "url": "https://bymobility.fr",
-        "telephone": "+33 1 XX XX XX XX",
+        "telephone": "+33658651317",
         "email": "contact@bymobility.fr",
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "44 Boulevard Beaumarchais",
+          "postalCode": "75011",
           "addressLocality": "Paris",
           "addressRegion": "Île-de-France",
           "addressCountry": "FR"
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 48.8566,
-          "longitude": 2.3522
+          "latitude": 48.8578,
+          "longitude": 2.3669
         },
         "areaServed": { "@type": "City", "name": "Paris" },
         "priceRange": "€€€",
@@ -1887,6 +1963,6 @@
       }
     </script>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
   </body>
 </html>

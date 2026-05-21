@@ -244,6 +244,140 @@ document.addEventListener("DOMContentLoaded", () => {
     })();
   }
 
+  // ─── Contact Form ───
+  const contactForm = document.getElementById("contact-form");
+  const formWrapper = document.querySelector(".contact__form-wrapper");
+
+  if (contactForm && formWrapper) {
+    // ── Injecter le panneau de succès ──
+    const successPanel = document.createElement("div");
+    successPanel.className = "contact__success";
+    successPanel.setAttribute("role", "status");
+    successPanel.setAttribute("aria-live", "polite");
+    successPanel.innerHTML = `
+      <div class="contact__success__icon">
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="9 12 11 14 15 10"/>
+        </svg>
+      </div>
+      <h3>Message envoy\u00e9\u00a0!</h3>
+      <p>Merci <strong class="success-name"></strong>, nous avons bien re\u00e7u votre demande.<br>
+         Nous vous r\u00e9pondrons dans les <strong>24\u00a0heures</strong>.</p>
+    `;
+    formWrapper.appendChild(successPanel);
+
+    // ── Injecter la bannière d'erreur ──
+    const errorBanner = document.createElement("div");
+    errorBanner.className = "form-banner form-banner--error";
+    errorBanner.setAttribute("role", "alert");
+    errorBanner.setAttribute("aria-live", "assertive");
+    contactForm.insertBefore(errorBanner, contactForm.firstChild);
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+    // ── Helpers ──
+    function setLoading(isLoading) {
+      submitBtn.disabled = isLoading;
+      if (isLoading) {
+        submitBtn.dataset.label = submitBtn.textContent.trim();
+        submitBtn.innerHTML =
+          '<span class="btn-spinner" aria-hidden="true"></span>Envoi en cours\u2026';
+        submitBtn.classList.add("btn--loading");
+      } else {
+        submitBtn.textContent = submitBtn.dataset.label || "Envoyer ma demande";
+        submitBtn.classList.remove("btn--loading");
+      }
+    }
+
+    function showError(msg) {
+      errorBanner.textContent = msg;
+      errorBanner.classList.add("visible");
+      errorBanner.classList.remove("shake");
+      void errorBanner.offsetWidth; // force reflow pour re-trigger l'animation
+      errorBanner.classList.add("shake");
+    }
+
+    function hideError() {
+      errorBanner.classList.remove("visible", "shake");
+    }
+
+    function showSuccess(name) {
+      successPanel.querySelector(".success-name").textContent = name;
+      // 1 – faire disparaître le formulaire
+      contactForm.style.transition = "opacity 0.35s ease, transform 0.35s ease";
+      contactForm.style.opacity = "0";
+      contactForm.style.transform = "translateY(-14px)";
+      // 2 – après la transition, cacher le form et afficher le succès
+      setTimeout(() => {
+        contactForm.style.display = "none";
+        successPanel.classList.add("visible");
+      }, 360);
+    }
+
+    // ── Regex email basique ──
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // ── Handler de soumission ──
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      hideError();
+
+      const name = contactForm.querySelector("#name").value.trim();
+      const email = contactForm.querySelector("#email").value.trim();
+      const message = contactForm.querySelector("#message").value.trim();
+
+      // Validation côté client
+      if (name.length < 2) {
+        showError("Veuillez renseigner votre nom complet.");
+        contactForm.querySelector("#name").focus();
+        return;
+      }
+      if (!emailRe.test(email)) {
+        showError("Veuillez entrer une adresse e-mail valide.");
+        contactForm.querySelector("#email").focus();
+        return;
+      }
+      if (message.length < 10) {
+        showError("Votre message est trop court (minimum 10 caract\u00e8res).");
+        contactForm.querySelector("#message").focus();
+        return;
+      }
+
+      setLoading(true);
+
+      try {
+        const res = await fetch("contact.php", {
+          method: "POST",
+          body: new FormData(contactForm),
+        });
+
+        let data;
+        try {
+          data = await res.json();
+        } catch {
+          throw new Error("R\u00e9ponse inattendue du serveur.");
+        }
+
+        if (data.success) {
+          showSuccess(name);
+        } else {
+          showError(
+            data.message ?? "Une erreur est survenue. Veuillez r\u00e9essayer.",
+          );
+          setLoading(false);
+        }
+      } catch {
+        showError(
+          "Impossible d'envoyer le message. V\u00e9rifiez votre connexion et r\u00e9essayez.",
+        );
+        setLoading(false);
+      }
+    });
+  }
+
   // ─── Subtle 3D Card Tilt ───
   if (!prefersReduced) {
     document

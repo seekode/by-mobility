@@ -1,0 +1,26 @@
+{
+  "name": "ByMobility – Conciergerie Premium à Paris",
+  "short_name": "ByMobility",
+  "description": "Conciergerie premium à Paris. Gestion locative courte durée et bail mobilité pour propriétaires exigeants.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0b1528",
+  "theme_color": "#0b1528",
+  "lang": "fr",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "purpose": "any"
+    },
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "maskable"
+    }
+  ]
+}

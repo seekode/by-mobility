@@ -3,8 +3,7 @@
    Vanilla CSS (converted from SCSS tokens + mixins)
    ═══════════════════════════════════════════════════ */
 
-/* ─── Fonts ─── */
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap");
+/* ─── Fonts chargées via <link> dans le HTML ─── */
 
 /* ─── Custom Properties (Design Tokens) ─── */
 :root {
@@ -836,7 +835,7 @@ h4 {
   );
 
   /* Verre dépoli : flou de l'image en arrière-plan */
-  backdrop-filter: blur(20px) saturate(0.8) brightness(1.04);
+  backdrop-filter: blur(10px) saturate(0.8) brightness(1.04);
   -webkit-backdrop-filter: blur(20px) saturate(0.8) brightness(1.04);
 
   /* Épaisseur de vitre — bords luminescents sur les 4 côtés */
@@ -1603,43 +1602,31 @@ h4 {
 /* ═══════════════════════════════════════════
    TEAM
    ═══════════════════════════════════════════ */
-.team__members {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-12);
-  max-width: 1000px;
-  margin-inline: auto;
-}
-
-.member {
+.team__duo {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-8);
+  gap: var(--space-10);
+  max-width: 960px;
+  margin-inline: auto;
   align-items: center;
 }
 
 @media (min-width: 768px) {
-  .member {
+  .team__duo {
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-12);
-  }
-  .member.reverse .member__image {
-    order: 2;
-  }
-  .member.reverse .member__info {
-    order: 1;
-    text-align: right;
+    gap: var(--space-16);
   }
 }
 
-.member__image {
+/* ─── Photo commune ─── */
+.team__duo__photo {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  aspect-ratio: 5 / 6;
+  aspect-ratio: 4 / 5;
 }
 
-.member__image::after {
+.team__duo__photo::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -1648,21 +1635,42 @@ h4 {
   pointer-events: none;
 }
 
-.member__image img {
+.team__duo__photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   transition: transform var(--duration-slow) var(--ease-out);
 }
 
-.member__image:hover img {
+.team__duo__photo:hover img {
   transform: scale(1.03);
 }
 
-.member__info {
+/* ─── Bloc infos ─── */
+.team__duo__info {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-6);
+  justify-content: center;
+}
+
+.team__duo__member {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Séparateur or entre les deux membres */
+.team__duo__sep {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--gold-300),
+    transparent
+  );
+  margin: var(--space-2) 0;
 }
 
 .member__name {
@@ -2029,7 +2037,167 @@ h4 {
 }
 
 .legal__back:hover {
-  color: var(--gold-600);
+  color: var(--gold-400);
+}
+
+/* ═══════════════════════════════════════════════════
+   Contact Form – états dynamiques
+   ═══════════════════════════════════════════════════ */
+
+/* ─── Wrapper ─── */
+.contact__form-wrapper {
+  position: relative;
+}
+
+/* ─── Honeypot (invisible pour les humains) ─── */
+.contact__honeypot {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+  tab-size: 0;
+}
+
+/* ─── Bannière d'erreur ─── */
+.form-banner {
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.45;
+  overflow: hidden;
+  max-height: 0;
+  padding: 0 1rem;
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    max-height 0.35s ease,
+    padding 0.3s ease,
+    margin-bottom 0.3s ease;
+  margin-bottom: 0;
+}
+.form-banner.visible {
+  max-height: 6rem;
+  padding: 0.75rem 1rem;
+  opacity: 1;
+  margin-bottom: 1.25rem;
+}
+.form-banner--error {
+  background: rgba(220, 38, 38, 0.06);
+  border: 1px solid rgba(220, 38, 38, 0.22);
+  color: #c42b2b;
+}
+
+/* ─── Animation shake ─── */
+@keyframes form-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-7px);
+  }
+  40% {
+    transform: translateX(7px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+.form-banner.shake {
+  animation: form-shake 0.42s ease;
+}
+
+/* ─── Bouton – état chargement ─── */
+.btn--loading {
+  opacity: 0.68;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
+/* ─── Spinner inline ─── */
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.btn-spinner {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: btn-spin 0.65s linear infinite;
+  vertical-align: -3px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+/* ─── Panneau de succès ─── */
+.contact__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3.5rem 1.5rem 3rem;
+  gap: 1.1rem;
+  opacity: 0;
+  transform: scale(0.95) translateY(18px);
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.contact__success.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+/* Icône cercle doré */
+.contact__success__icon {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(201, 169, 110, 0.12),
+    rgba(201, 169, 110, 0.04)
+  );
+  border: 1.5px solid rgba(201, 169, 110, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-400, #c9a96e);
+  flex-shrink: 0;
+  animation: icon-pop 0.5s 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes icon-pop {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.contact__success h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy-900, #0b1528);
+  margin: 0;
+}
+.contact__success p {
+  color: var(--navy-600, #445068);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin: 0;
+  max-width: 26rem;
 }
 
 /* ═══════════════════════════════════════════
@@ -2195,5 +2363,152 @@ h4 {
   .cursor-ring,
   .cursor-dot {
     display: none;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE STYLES FOR SMALL SCREENS (<450px)
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 450px) {
+  /* Reduce container padding on very small screens */
+  .container {
+    padding-inline: var(--space-4);
+  }
+
+  /* Navbar adjustments */
+  .navbar {
+    padding: var(--space-4) 0;
+  }
+
+  .navbar.scrolled {
+    padding: var(--space-2) 0;
+  }
+
+  .navbar__inner {
+    gap: var(--space-2);
+  }
+
+  .navbar__logo .logo-text {
+    font-size: var(--fs-xl);
+    letter-spacing: 0.04em;
+  }
+
+  /* Button adjustments */
+  .btn {
+    padding: var(--space-3) var(--space-5);
+    font-size: var(--fs-sm);
+    white-space: nowrap;
+  }
+
+  .navbar__actions .btn {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--fs-xs);
+  }
+
+  /* Mobile menu adjustments */
+  .mobile-menu__content {
+    padding: var(--space-16) var(--space-4);
+  }
+
+  .mobile-menu__links {
+    gap: var(--space-4);
+  }
+
+  .mobile-menu__link {
+    font-size: var(--fs-xl);
+  }
+
+  /* Hero section adjustments */
+  .hero__title {
+    font-size: var(--fs-3xl);
+  }
+
+  .hero__subtitle {
+    font-size: var(--fs-sm);
+  }
+
+  .hero__ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero__ctas .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Typography adjustments */
+  h1 {
+    font-size: var(--fs-3xl);
+  }
+
+  h2 {
+    font-size: var(--fs-2xl);
+  }
+
+  h3 {
+    font-size: var(--fs-xl);
+  }
+
+  h4 {
+    font-size: var(--fs-lg);
+  }
+
+  /* Section heading adjustments */
+  .section-heading__title {
+    font-size: var(--fs-2xl);
+  }
+
+  .section-heading__subtitle {
+    font-size: var(--fs-sm);
+  }
+
+  /* Card adjustments */
+  .service-card,
+  .advantage-card,
+  .pricing-card {
+    padding: var(--space-6);
+  }
+
+  /* Form adjustments */
+  .contact__grid {
+    gap: var(--space-8);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: var(--fs-sm);
+    padding: var(--space-3);
+  }
+
+  /* Footer adjustments */
+  .footer__grid {
+    gap: var(--space-8);
+  }
+
+  /* Reduce overall spacing */
+  .section {
+    padding-block: var(--space-12);
+  }
+
+  /* Counter adjustments */
+  .counter {
+    font-size: var(--fs-4xl);
+  }
+
+  /* Testimonial adjustments */
+  .testimonial-card__content {
+    font-size: var(--fs-sm);
+  }
+
+  /* Timeline adjustments */
+  .timeline-step__title {
+    font-size: var(--fs-lg);
+  }
+
+  .timeline-step__desc {
+    font-size: var(--fs-sm);
   }
 }
