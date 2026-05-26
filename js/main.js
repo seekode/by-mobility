@@ -8,6 +8,86 @@ document.addEventListener("DOMContentLoaded", () => {
     "(prefers-reduced-motion: reduce)",
   ).matches;
 
+  // ─── Smooth Scroll (tous les ancres du site) ───
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const href = anchor.getAttribute("href");
+      if (!href || href === "#") return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      const navH = navbar ? navbar.offsetHeight : 80;
+      const top =
+        target.getBoundingClientRect().top + window.scrollY - navH - 12;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    });
+  });
+
+  // ─── Active Nav Indicator ───
+  const navLinks = document.querySelectorAll(".nav__link");
+  const navIndicator = document.querySelector(".nav__indicator");
+  const navbarNav = document.querySelector(".navbar__nav");
+
+  if (navLinks.length && navIndicator && navbarNav) {
+    let currentActive = null;
+
+    function moveIndicatorToLink(link) {
+      const navRect = navbarNav.getBoundingClientRect();
+      const linkRect = link.getBoundingClientRect();
+      navIndicator.style.width = linkRect.width + "px";
+      navIndicator.style.transform = `translateX(${linkRect.left - navRect.left}px)`;
+      navIndicator.classList.add("visible");
+    }
+
+    function setActive(id) {
+      const link = document.querySelector(`.nav__link[href="#${id}"]`);
+      if (!link || link === currentActive) return;
+      navLinks.forEach((l) => l.classList.remove("active"));
+      link.classList.add("active");
+      currentActive = link;
+      if (!prefersReduced) moveIndicatorToLink(link);
+    }
+
+    // Recalculer la position au resize (layout change)
+    window.addEventListener(
+      "resize",
+      () => {
+        if (currentActive) moveIndicatorToLink(currentActive);
+      },
+      { passive: true },
+    );
+
+    // Recalculer lors de la transition scrolled (padding navbar change)
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (currentActive && navIndicator.classList.contains("visible")) {
+          requestAnimationFrame(() => moveIndicatorToLink(currentActive));
+        }
+      },
+      { passive: true },
+    );
+
+    // Observer chaque section liée à un lien nav
+    const sectionIds = [...navLinks].map((l) =>
+      l.getAttribute("href").replace("#", ""),
+    );
+    const sectionEls = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-20% 0px -60% 0px", threshold: 0 },
+    );
+
+    sectionEls.forEach((s) => sectionObserver.observe(s));
+  }
+
   // ─── Navbar Scroll ───
   const navbar = document.querySelector(".navbar");
   if (navbar) {
@@ -45,6 +125,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     hamburger.addEventListener("click", toggleMenu);
+
+    const closeBtn = document.querySelector(".mobile-menu__close");
+    if (closeBtn) closeBtn.addEventListener("click", closeMenu);
 
     mobileLinks.forEach((link) => {
       link.addEventListener("click", closeMenu);

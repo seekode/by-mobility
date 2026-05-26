@@ -83,8 +83,32 @@
           >
         </a>
 
+        <!-- Navigation desktop -->
+        <nav class="navbar__nav" aria-label="Sections du site">
+          <ul role="list">
+            <li><a href="#services" class="nav__link">Services</a></li>
+            <li><a href="#avantages" class="nav__link">Avantages</a></li>
+            <li><a href="#temoignages" class="nav__link">Témoignages</a></li>
+            <li><a href="#processus" class="nav__link">Processus</a></li>
+            <li><a href="#tarifs" class="nav__link">Tarifs</a></li>
+            <li><a href="#equipe" class="nav__link">Équipe</a></li>
+            <li><a href="#portfolio" class="nav__link">Portfolio</a></li>
+          </ul>
+          <span class="nav__indicator" aria-hidden="true"></span>
+        </nav>
+
         <div class="navbar__actions">
           <a href="#contact" class="btn btn--primary">Nous contacter</a>
+          <button
+            class="navbar__hamburger"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
     </nav>
@@ -92,6 +116,22 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
       <div class="mobile-menu__content">
+        <button class="mobile-menu__close" aria-label="Fermer le menu">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
         <nav aria-label="Navigation mobile">
           <ul class="mobile-menu__links" role="list">
             <li><a href="#services" class="mobile-menu__link">Services</a></li>
@@ -155,10 +195,14 @@
           </div>
         </div>
 
-        <div class="hero__scroll" aria-hidden="true">
+        <a
+          href="#services"
+          class="hero__scroll"
+          aria-label="Défiler vers les services"
+        >
           <span class="scroll-text">Scroll</span>
           <span class="scroll-line"></span>
-        </div>
+        </a>
       </section>
 
       <!-- ═══════════════════════════════════════════
@@ -1628,6 +1672,29 @@
             </div>
 
             <!-- Ligne 3 -->
+
+            <div
+              class="reveal reveal--fade-up property-card"
+              style="--delay: 350ms"
+            >
+              <div class="property-card__image">
+                <img
+                  src="img/photos/7.webp"
+                  alt="Salle de bain avec carrelage zelliges, robinetterie dorée et douche en verre"
+                  loading="lazy"
+                />
+                <div class="property-card__overlay">
+                  <span class="micro-label property-card__type"
+                    >Courte durée</span
+                  >
+                  <h3 class="property-card__title-text">
+                    Salle de Bain Zelliges
+                  </h3>
+                  <p class="property-card__location">Paris 11e – Bastille</p>
+                </div>
+              </div>
+            </div>
+
             <div
               class="reveal reveal--fade-up property-card large"
               style="--delay: 300ms"
@@ -1648,28 +1715,6 @@
                   <p class="property-card__location">
                     Paris 11e – Beaumarchais
                   </p>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="reveal reveal--fade-up property-card"
-              style="--delay: 350ms"
-            >
-              <div class="property-card__image">
-                <img
-                  src="img/photos/7.webp"
-                  alt="Salle de bain avec carrelage zelliges, robinetterie dorée et douche en verre"
-                  loading="lazy"
-                />
-                <div class="property-card__overlay">
-                  <span class="micro-label property-card__type"
-                    >Courte durée</span
-                  >
-                  <h3 class="property-card__title-text">
-                    Salle de Bain Zelliges
-                  </h3>
-                  <p class="property-card__location">Paris 11e – Bastille</p>
                 </div>
               </div>
             </div>
@@ -1894,7 +1939,7 @@
             <ul role="list">
               <li>
                 <a
-                  href="https://instagram.com/bymobility"
+                  href="https://www.instagram.com/bymobility_?igsh=MW9sODJ2bnZjeW9taA=="
                   target="_blank"
                   rel="noopener noreferrer"
                   >Instagram</a
@@ -1902,18 +1947,10 @@
               </li>
               <li>
                 <a
-                  href="https://linkedin.com/company/bymobility"
+                  href="https://www.linkedin.com/company/98702956/"
                   target="_blank"
                   rel="noopener noreferrer"
                   >LinkedIn</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://facebook.com/bymobility"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Facebook</a
                 >
               </li>
             </ul>
